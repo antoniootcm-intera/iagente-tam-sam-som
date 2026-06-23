@@ -83,9 +83,7 @@
     text-align: center;
     letter-spacing: 0.05em;
   }
-  #gate input[type=password]:focus {
-    border-color: var(--accent);
-  }
+  #gate input[type=password]:focus { border-color: var(--accent); }
   #gate button {
     width: 100%;
     padding: 12px;
@@ -142,16 +140,38 @@
     padding: 16px 0;
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
-    margin-bottom: 56px;
+    margin-bottom: 0;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
     color: var(--ink-3);
     letter-spacing: 0.04em;
   }
-  .meta-row span strong {
-    color: var(--ink);
-    font-weight: 500;
+  .meta-row span strong { color: var(--ink); font-weight: 500; }
+
+  /* Tabs */
+  .tab-nav {
+    display: flex;
+    border-bottom: 2px solid var(--rule-strong);
+    margin-bottom: 48px;
+    margin-top: 0;
   }
+  .tab-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 16px 24px;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
   section { margin-bottom: 64px; }
   h2 {
     font-size: 13px;
@@ -195,11 +215,7 @@
     margin: 0 0 8px;
     line-height: 1;
   }
-  .metric .sub {
-    font-size: 13px;
-    color: var(--ink-2);
-    margin: 0;
-  }
+  .metric .sub { font-size: 13px; color: var(--ink-2); margin: 0; }
   .metric.featured { background: var(--accent-soft); }
   .metric.featured .label { color: var(--accent); }
 
@@ -224,16 +240,8 @@
     border-radius: 2px;
     white-space: nowrap;
   }
-  .anchor p {
-    margin: 0;
-    font-size: 14px;
-    color: var(--ink-2);
-  }
-  .anchor strong {
-    color: var(--ink);
-    font-weight: 500;
-    font-family: 'IBM Plex Mono', monospace;
-  }
+  .anchor p { margin: 0; font-size: 14px; color: var(--ink-2); }
+  .anchor strong { color: var(--ink); font-weight: 500; font-family: 'IBM Plex Mono', monospace; }
 
   /* Sensitivity panel */
   .panel {
@@ -241,186 +249,104 @@
     border: 1px solid var(--rule-strong);
     padding: 32px;
   }
-  .panel-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 20px;
-  }
-  .panel-head h3 {
-    font-size: 16px;
-    font-weight: 500;
-    margin: 0;
-    color: var(--ink);
-  }
-  .panel-head .note {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--ink-3);
-    letter-spacing: 0.05em;
-  }
-  .slider-row {
-    display: grid;
-    grid-template-columns: 60px 1fr 60px;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .slider-row span {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--ink-3);
-  }
+  .panel-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
+  .panel-head h3 { font-size: 16px; font-weight: 500; margin: 0; color: var(--ink); }
+  .panel-head .note { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-3); letter-spacing: 0.05em; }
+  .slider-row { display: grid; grid-template-columns: 60px 1fr 60px; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .slider-row span { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-3); }
   .slider-row span:last-child { text-align: right; }
-  input[type=range] {
-    -webkit-appearance: none;
-    appearance: none;
-    background: transparent;
-    width: 100%;
-    height: 28px;
-    cursor: pointer;
-  }
-  input[type=range]::-webkit-slider-runnable-track {
-    height: 2px;
-    background: var(--rule-strong);
-  }
-  input[type=range]::-moz-range-track {
-    height: 2px;
-    background: var(--rule-strong);
-  }
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 18px;
-    width: 18px;
-    background: var(--accent);
-    border: 2px solid var(--surface);
-    box-shadow: 0 0 0 1px var(--accent);
-    border-radius: 50%;
-    margin-top: -8px;
-    cursor: grab;
-  }
-  input[type=range]::-moz-range-thumb {
-    height: 18px;
-    width: 18px;
-    background: var(--accent);
-    border: 2px solid var(--surface);
-    box-shadow: 0 0 0 1px var(--accent);
-    border-radius: 50%;
-    cursor: grab;
-  }
-  .readout {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--rule);
-    padding-top: 24px;
-  }
+  input[type=range] { -webkit-appearance: none; appearance: none; background: transparent; width: 100%; height: 28px; cursor: pointer; }
+  input[type=range]::-webkit-slider-runnable-track { height: 2px; background: var(--rule-strong); }
+  input[type=range]::-moz-range-track { height: 2px; background: var(--rule-strong); }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 18px; width: 18px; background: var(--accent); border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--accent); border-radius: 50%; margin-top: -8px; cursor: grab; }
+  input[type=range]::-moz-range-thumb { height: 18px; width: 18px; background: var(--accent); border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--accent); border-radius: 50%; cursor: grab; }
+  .readout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--rule); padding-top: 24px; }
   .readout .item { padding-right: 24px; }
   .readout .item + .item { border-left: 1px solid var(--rule); padding-left: 24px; }
-  .readout .k {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--ink-3);
-    margin: 0 0 6px;
-  }
-  .readout .v {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--ink);
-    margin: 0;
-    letter-spacing: -0.01em;
-  }
+  .readout .k { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin: 0 0 6px; }
+  .readout .v { font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; color: var(--ink); margin: 0; letter-spacing: -0.01em; }
 
   /* Chart */
-  .chart-wrap {
-    background: var(--surface);
-    border: 1px solid var(--rule);
-    padding: 28px 28px 20px;
-  }
-  .chart-canvas-wrap {
-    position: relative;
-    width: 100%;
-    height: 440px;
-  }
+  .chart-wrap { background: var(--surface); border: 1px solid var(--rule); padding: 28px 28px 20px; }
+  .chart-canvas-wrap { position: relative; width: 100%; height: 440px; }
 
   /* Categories grid */
-  .cat-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border: 1px solid var(--rule-strong);
-    background: var(--surface);
-  }
-  .cat {
-    padding: 22px 24px;
-    border-right: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-  }
+  .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--rule-strong); background: var(--surface); }
+  .cat { padding: 22px 24px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
   .cat:nth-child(3n) { border-right: none; }
   .cat-grid > .cat:nth-last-child(-n+3) { border-bottom: none; }
-  .cat-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 10px;
-    gap: 12px;
-  }
-  .cat-head .name {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .cat-head .range {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--ink-3);
-    white-space: nowrap;
-  }
-  .cat p {
-    font-size: 13px;
-    color: var(--ink-2);
-    margin: 0;
-    line-height: 1.55;
-  }
-  .cat .flag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--warn);
-    margin-top: 8px;
-    display: block;
-  }
+  .cat-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; gap: 12px; }
+  .cat-head .name { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .cat-head .range { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-3); white-space: nowrap; }
+  .cat p { font-size: 13px; color: var(--ink-2); margin: 0; line-height: 1.55; }
+  .cat .flag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warn); margin-top: 8px; display: block; }
   .cat.adjacent { background: #FCFBF6; }
 
   /* Methodology */
-  .method {
-    background: var(--surface);
-    border: 1px solid var(--rule);
-    padding: 28px 32px;
-  }
-  .method dl {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 14px 32px;
-    margin: 0;
-  }
-  .method dt {
+  .method { background: var(--surface); border: 1px solid var(--rule); padding: 28px 32px; }
+  .method dl { display: grid; grid-template-columns: 180px 1fr; gap: 14px 32px; margin: 0; }
+  .method dt { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); padding-top: 2px; }
+  .method dd { margin: 0; font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+
+  /* ICP Companies tab */
+  .icp-summary {
+    display: flex;
+    gap: 32px;
+    padding: 16px 0 32px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 40px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
     color: var(--ink-3);
-    padding-top: 2px;
+    letter-spacing: 0.04em;
   }
-  .method dd {
+  .icp-summary span strong { color: var(--ink); font-weight: 500; }
+  .icp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 48px;
+  }
+  .icp-cat-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule-strong);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .icp-cat-title .icp-range {
+    font-size: 10px;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+  .icp-list {
+    list-style: none;
     margin: 0;
+    padding: 0;
+  }
+  .icp-list li {
     font-size: 13.5px;
-    color: var(--ink-2);
-    line-height: 1.6;
+    color: var(--ink);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.3;
+  }
+  .icp-list li:last-child { border-bottom: none; }
+  .icp-list li.adjacent-co { color: var(--ink-2); font-style: italic; }
+  .icp-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--warn);
+    margin-top: 6px;
+    display: block;
   }
 
   footer {
@@ -445,6 +371,12 @@
     .readout .item + .item { border-left: none; padding-left: 0; }
     .method dl { grid-template-columns: 1fr; gap: 4px 0; }
     .method dt { margin-top: 14px; }
+    .icp-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .meta-row { flex-wrap: wrap; gap: 12px; }
+    .icp-summary { flex-wrap: wrap; gap: 12px; }
+  }
+  @media (max-width: 560px) {
+    .icp-grid { grid-template-columns: 1fr; }
   }
   @media print {
     body { background: white; }
@@ -479,181 +411,345 @@
     <span>PRODUTO — <strong>R$ 5.000 / crédito</strong></span>
   </div>
 
-  <section>
-    <h2>Dimensionamento</h2>
-    <div class="hero">
-      <div class="metric featured">
-        <p class="label">TAM — Total addressable</p>
-        <p class="value" id="tam-rev">R$ 788M</p>
-        <p class="sub"><span id="tam-vol">315.000</span> admissões/ano · Grandes redes BR</p>
-      </div>
-      <div class="metric">
-        <p class="label">SAM — Serviceable</p>
-        <p class="value" id="sam-rev">R$ 225M</p>
-        <p class="sub"><span id="sam-vol">90.000</span> admissões/ano · Operação centralizada</p>
-      </div>
-      <div class="metric">
-        <p class="label">SOM — Obtenível 24m</p>
-        <p class="value">R$ 2–7M</p>
-        <p class="sub">15 a 40 redes pagantes · ~1,5 pacote/ciclo</p>
-      </div>
-    </div>
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('mercado', this)">Estudo TAM · SAM · SOM</button>
+    <button class="tab-btn" onclick="showTab('empresas', this)">Empresas ICP</button>
+  </nav>
 
-    <div class="anchor">
-      <span class="tag">Âncora real</span>
-      <p>Últimos 12 meses: <strong>1.048.539</strong> admissões e <strong>1.038.994</strong> desligamentos formais de vendedor no Brasil (CAGED, CBO 5211-10, que agrega vendedor e consultor).</p>
-    </div>
-  </section>
+  <!-- TAB: Mercado -->
+  <div id="panel-mercado">
 
-  <section>
-    <h2>Sensibilidade — contratações por crédito</h2>
-    <div class="panel">
-      <div class="panel-head">
-        <h3>Variável crítica do modelo</h3>
-        <span class="note">case Magalu = 3,0x · base conservadora = 2,0x</span>
-      </div>
-      <div class="slider-row">
-        <span>1,0x</span>
-        <input type="range" min="10" max="40" value="20" step="1" id="ratio" aria-label="Contratações por crédito" />
-        <span>4,0x</span>
-      </div>
-      <div class="readout">
-        <div class="item">
-          <p class="k">Ratio</p>
-          <p class="v" id="ratio-out">2,0x</p>
+    <section>
+      <h2>Dimensionamento</h2>
+      <div class="hero">
+        <div class="metric featured">
+          <p class="label">TAM — Total addressable</p>
+          <p class="value" id="tam-rev">R$ 788M</p>
+          <p class="sub"><span id="tam-vol">315.000</span> admissões/ano · Grandes redes BR</p>
         </div>
-        <div class="item">
-          <p class="k">Custo / contratação</p>
-          <p class="v" id="cost-out">R$ 2.500</p>
+        <div class="metric">
+          <p class="label">SAM — Serviceable</p>
+          <p class="value" id="sam-rev">R$ 225M</p>
+          <p class="sub"><span id="sam-vol">90.000</span> admissões/ano · Operação centralizada</p>
         </div>
-        <div class="item">
-          <p class="k">TAM em receita</p>
-          <p class="v" id="tam-out">R$ 788M</p>
-        </div>
-        <div class="item">
-          <p class="k">SAM em receita</p>
-          <p class="v" id="sam-out">R$ 225M</p>
+        <div class="metric">
+          <p class="label">SOM — Obtenível 24m</p>
+          <p class="value">R$ 2–7M</p>
+          <p class="sub">15 a 40 redes pagantes · ~1,5 pacote/ciclo</p>
         </div>
       </div>
+      <div class="anchor">
+        <span class="tag">Âncora real</span>
+        <p>Últimos 12 meses: <strong>1.048.539</strong> admissões e <strong>1.038.994</strong> desligamentos formais de vendedor no Brasil (CAGED, CBO 5211-10, que agrega vendedor e consultor).</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Sensibilidade — contratações por crédito</h2>
+      <div class="panel">
+        <div class="panel-head">
+          <h3>Variável crítica do modelo</h3>
+          <span class="note">case Magalu = 3,0x · base conservadora = 2,0x</span>
+        </div>
+        <div class="slider-row">
+          <span>1,0x</span>
+          <input type="range" min="10" max="40" value="20" step="1" id="ratio" aria-label="Contratações por crédito" />
+          <span>4,0x</span>
+        </div>
+        <div class="readout">
+          <div class="item"><p class="k">Ratio</p><p class="v" id="ratio-out">2,0x</p></div>
+          <div class="item"><p class="k">Custo / contratação</p><p class="v" id="cost-out">R$ 2.500</p></div>
+          <div class="item"><p class="k">TAM em receita</p><p class="v" id="tam-out">R$ 788M</p></div>
+          <div class="item"><p class="k">SAM em receita</p><p class="v" id="sam-out">R$ 225M</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Admissões por categoria (estimativa, mil/ano)</h2>
+      <div class="chart-wrap">
+        <div class="chart-canvas-wrap">
+          <canvas id="catChart" role="img" aria-label="Gráfico de barras com faixas de admissões anuais por categoria de varejo"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Empresas por categoria</h2>
+      <div class="cat-grid">
+        <div class="cat">
+          <div class="cat-head"><span class="name">Moda / departamento</span><span class="range">15–25k/ano</span></div>
+          <p>Renner, Riachuelo, C&amp;A, Marisa, Pernambucanas, Hering, Lojas Avenida, Lojas Torra</p>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Eletromóveis</span><span class="range">14–22k/ano</span></div>
+          <p>Magazine Luiza, Casas Bahia, Lojas Cem, Novo Mundo, Gazin, Colombo, Eletrozema, Berlanda, Lebes, Becker, Bemol</p>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Material de construção</span><span class="range">8–14k/ano</span></div>
+          <p>Leroy Merlin, Telhanorte, C&amp;C, Balaroti, Quero-Quero, Cassol, Obramax, Tumelero, Center Castilho</p>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Veículos</span><span class="range">8–15k/ano</span></div>
+          <p>Saga, Grand Brasil, Itavema, Disbrave, Sinosserra, Localiza Seminovos, Movida Seminovos, Unidas</p>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Telecom (lojas próprias)</span><span class="range">5–9k/ano</span></div>
+          <p>Vivo, Claro, TIM, Algar</p>
+          <span class="flag">Parte relevante é franquia</span>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Atacado B2B alimentos</span><span class="range">3–6k/ano</span></div>
+          <p>Grupo Martins, Peixoto Comercial, Coremas, Maxxi Atacado, distribuidoras regionais</p>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Pet</span><span class="range">2,5–5k/ano</span></div>
+          <p>Cobasi, Petz, Petlove</p>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Cosméticos</span><span class="range">2–4k/ano</span></div>
+          <p>O Boticário (próprias + The Beauty Box + Quem Disse Berenice), Sephora, Época, Água de Cheiro</p>
+          <span class="flag">Boticário majoritariamente franquia</span>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Calçados</span><span class="range">2–4k/ano</span></div>
+          <p>Arezzo&amp;Co, Paquetá, Democrata, Passarela, Lojas Pompéia, Constance</p>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Esporte</span><span class="range">2–4k/ano</span></div>
+          <p>Centauro (Grupo SBF), Decathlon, Track&amp;Field, Authentic Feet</p>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Móveis / planejados</span><span class="range">2–4k/ano</span></div>
+          <p>Tok&amp;Stok, Etna, Marabraz, MadeiraMadeira, Bartira. Planejados: Dell Anno, Todeschini, SCA, Italínea, Madesa</p>
+          <span class="flag">Planejados operam em franquia</span>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Joias / acessórios</span><span class="range">1,5–3k/ano</span></div>
+          <p>Vivara, Monte Carlo, Morana, Pandora, H.Stern</p>
+        </div>
+        <div class="cat">
+          <div class="cat-head"><span class="name">Eletro / info especializado</span><span class="range">1–2k/ano</span></div>
+          <p>Fast Shop, Kalunga</p>
+        </div>
+        <div class="cat adjacent">
+          <div class="cat-head"><span class="name">Farmácia (adjacente)</span><span class="range">15–22k/ano</span></div>
+          <p>RD Saúde, Pague Menos/Extrafarma, DPSP, Drogaria Araujo, Panvel, Nissei</p>
+          <span class="flag">Função é balconista. Inclui se incluir.</span>
+        </div>
+        <div class="cat adjacent">
+          <div class="cat-head"><span class="name">Cauda longa</span><span class="range">—</span></div>
+          <p>Regionais e cadeias de porte médio em todas as categorias acima. Captura aqui depende de operação centralizada.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Metodologia e ressalvas</h2>
+      <div class="method">
+        <dl>
+          <dt>Função, não título</dt>
+          <dd>Filtro por função de vendas (PDV ou B2B campo), não por palavra "vendedor". CBO 5211-10 agrega vendedor e consultor de vendas no mesmo código.</dd>
+          <dt>Fora do escopo</dt>
+          <dd>Atacarejo (Assaí, Atacadão, Tenda) é self-service sem força de vendedor. Atacado distribuidor (Grupo Martins etc.) entra, tem força externa.</dd>
+          <dt>TAM</dt>
+          <dd>~30% das admissões formais BR concentradas em grandes redes organizadas (faixa 25–40%). Receita = admissões ÷ ratio × R$ 5.000.</dd>
+          <dt>SAM</dt>
+          <dd>Soma bottom-up das categorias, descontando franquia pulverizada (Boticário, planejados, parte de telecom e ótica).</dd>
+          <dt>SOM</dt>
+          <dd>Limitado por capacidade comercial, não por demanda. 15 a 40 redes × 1,5 pacote por ciclo × R$ 60.000 = R$ 2 a 7M/ano.</dd>
+          <dt>Faixa por categoria</dt>
+          <dd>Lojas × vendedores/loja × turnover 30–50%. Estimativa, não dado oficial por empresa. Substituir pelos dados do scraper aumenta precisão.</dd>
+          <dt>Variável crítica</dt>
+          <dd>Contratações por crédito. Case Magalu (3,0x) é n=1. Se o típico for 1,5x, SAM em receita sobe; se for 3,0x, cai pela metade.</dd>
+        </dl>
+      </div>
+    </section>
+
+  </div><!-- /panel-mercado -->
+
+  <!-- TAB: Empresas ICP -->
+  <div id="panel-empresas" style="display:none">
+
+    <div class="icp-summary">
+      <span>ESCOPO — <strong>operação centralizada de RH</strong></span>
+      <span>CRITÉRIO — <strong>fora franquias pulverizadas</strong></span>
+      <span>TOTAL — <strong>~85 empresas mapeadas</strong></span>
     </div>
-  </section>
 
-  <section>
-    <h2>Admissões por categoria (estimativa, mil/ano)</h2>
-    <div class="chart-wrap">
-      <div class="chart-canvas-wrap">
-        <canvas id="catChart" role="img" aria-label="Gráfico de barras com faixas de admissões anuais por categoria de varejo"></canvas>
+    <div class="icp-grid">
+
+      <div>
+        <p class="icp-cat-title">Moda / Departamento <span class="icp-range">15–25k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Renner</li>
+          <li>Riachuelo</li>
+          <li>C&amp;A</li>
+          <li>Marisa</li>
+          <li>Pernambucanas</li>
+          <li>Hering</li>
+          <li>Lojas Avenida</li>
+          <li>Lojas Torra</li>
+        </ul>
       </div>
+
+      <div>
+        <p class="icp-cat-title">Eletromóveis <span class="icp-range">14–22k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Magazine Luiza</li>
+          <li>Casas Bahia</li>
+          <li>Lojas Cem</li>
+          <li>Novo Mundo</li>
+          <li>Gazin</li>
+          <li>Colombo</li>
+          <li>Eletrozema</li>
+          <li>Berlanda</li>
+          <li>Lebes</li>
+          <li>Becker</li>
+          <li>Bemol</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Material de Construção <span class="icp-range">8–14k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Leroy Merlin</li>
+          <li>Telhanorte</li>
+          <li>C&amp;C</li>
+          <li>Balaroti</li>
+          <li>Quero-Quero</li>
+          <li>Cassol</li>
+          <li>Obramax</li>
+          <li>Tumelero</li>
+          <li>Center Castilho</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Veículos <span class="icp-range">8–15k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Saga</li>
+          <li>Grand Brasil</li>
+          <li>Itavema</li>
+          <li>Disbrave</li>
+          <li>Sinosserra</li>
+          <li>Localiza Seminovos</li>
+          <li>Movida Seminovos</li>
+          <li>Unidas</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Telecom — lojas próprias <span class="icp-range">5–9k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Vivo</li>
+          <li>Claro</li>
+          <li>TIM</li>
+          <li>Algar</li>
+        </ul>
+        <span class="icp-note">Excluídas franquias</span>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Atacado B2B Alimentos <span class="icp-range">3–6k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Grupo Martins</li>
+          <li>Peixoto Comercial</li>
+          <li>Coremas</li>
+          <li>Maxxi Atacado</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Pet <span class="icp-range">2,5–5k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Cobasi</li>
+          <li>Petz</li>
+          <li>Petlove</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Cosméticos <span class="icp-range">2–4k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>The Beauty Box</li>
+          <li>Quem Disse Berenice</li>
+          <li>Sephora</li>
+          <li>Época Cosméticos</li>
+          <li>Água de Cheiro</li>
+        </ul>
+        <span class="icp-note">Excluídas franquias Boticário</span>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Calçados <span class="icp-range">2–4k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Arezzo&amp;Co</li>
+          <li>Paquetá</li>
+          <li>Democrata</li>
+          <li>Passarela</li>
+          <li>Lojas Pompéia</li>
+          <li>Constance</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Esporte <span class="icp-range">2–4k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Centauro (Grupo SBF)</li>
+          <li>Decathlon</li>
+          <li>Track&amp;Field</li>
+          <li>Authentic Feet</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Móveis <span class="icp-range">2–4k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Tok&amp;Stok</li>
+          <li>Etna</li>
+          <li>Marabraz</li>
+          <li>MadeiraMadeira</li>
+          <li>Bartira</li>
+        </ul>
+        <span class="icp-note">Excluídos planejados franqueados</span>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Joias / Acessórios <span class="icp-range">1,5–3k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Vivara</li>
+          <li>Monte Carlo</li>
+          <li>Morana</li>
+          <li>Pandora</li>
+          <li>H.Stern</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Eletro / Info Especializado <span class="icp-range">1–2k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li>Fast Shop</li>
+          <li>Kalunga</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Farmácia — adjacente <span class="icp-range">15–22k admissões/ano</span></p>
+        <ul class="icp-list">
+          <li class="adjacent-co">RD Saúde</li>
+          <li class="adjacent-co">Pague Menos</li>
+          <li class="adjacent-co">Extrafarma</li>
+          <li class="adjacent-co">DPSP</li>
+          <li class="adjacent-co">Drogaria Araujo</li>
+          <li class="adjacent-co">Panvel</li>
+          <li class="adjacent-co">Nissei</li>
+        </ul>
+        <span class="icp-note">Incluir se expandir para balconistas</span>
+      </div>
+
     </div>
-  </section>
-
-  <section>
-    <h2>Empresas por categoria</h2>
-    <div class="cat-grid">
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Moda / departamento</span><span class="range">15–25k/ano</span></div>
-        <p>Renner, Riachuelo, C&amp;A, Marisa, Pernambucanas, Hering, Lojas Avenida, Lojas Torra</p>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Eletromóveis</span><span class="range">14–22k/ano</span></div>
-        <p>Magazine Luiza, Casas Bahia, Lojas Cem, Novo Mundo, Gazin, Colombo, Eletrozema, Berlanda, Lebes, Becker, Bemol</p>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Material de construção</span><span class="range">8–14k/ano</span></div>
-        <p>Leroy Merlin, Telhanorte, C&amp;C, Balaroti, Quero-Quero, Cassol, Obramax, Tumelero, Center Castilho</p>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Veículos</span><span class="range">8–15k/ano</span></div>
-        <p>Saga, Grand Brasil, Itavema, Disbrave, Sinosserra, Localiza Seminovos, Movida Seminovos, Unidas</p>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Telecom (lojas próprias)</span><span class="range">5–9k/ano</span></div>
-        <p>Vivo, Claro, TIM, Algar</p>
-        <span class="flag">Parte relevante é franquia</span>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Atacado B2B alimentos</span><span class="range">3–6k/ano</span></div>
-        <p>Grupo Martins, Peixoto Comercial, Coremas, Maxxi Atacado, distribuidoras regionais</p>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Pet</span><span class="range">2,5–5k/ano</span></div>
-        <p>Cobasi, Petz, Petlove</p>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Cosméticos</span><span class="range">2–4k/ano</span></div>
-        <p>O Boticário (próprias + The Beauty Box + Quem Disse Berenice), Sephora, Época, Água de Cheiro</p>
-        <span class="flag">Boticário majoritariamente franquia</span>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Calçados</span><span class="range">2–4k/ano</span></div>
-        <p>Arezzo&amp;Co, Paquetá, Democrata, Passarela, Lojas Pompéia, Constance</p>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Esporte</span><span class="range">2–4k/ano</span></div>
-        <p>Centauro (Grupo SBF), Decathlon, Track&amp;Field, Authentic Feet</p>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Móveis / planejados</span><span class="range">2–4k/ano</span></div>
-        <p>Tok&amp;Stok, Etna, Marabraz, MadeiraMadeira, Bartira. Planejados: Dell Anno, Todeschini, SCA, Italínea, Madesa</p>
-        <span class="flag">Planejados operam em franquia</span>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Joias / acessórios</span><span class="range">1,5–3k/ano</span></div>
-        <p>Vivara, Monte Carlo, Morana, Pandora, H.Stern</p>
-      </div>
-
-      <div class="cat">
-        <div class="cat-head"><span class="name">Eletro / info especializado</span><span class="range">1–2k/ano</span></div>
-        <p>Fast Shop, Kalunga</p>
-      </div>
-
-      <div class="cat adjacent">
-        <div class="cat-head"><span class="name">Farmácia (adjacente)</span><span class="range">15–22k/ano</span></div>
-        <p>RD Saúde, Pague Menos/Extrafarma, DPSP, Drogaria Araujo, Panvel, Nissei</p>
-        <span class="flag">Função é balconista. Inclui se incluir.</span>
-      </div>
-
-      <div class="cat adjacent">
-        <div class="cat-head"><span class="name">Cauda longa</span><span class="range">—</span></div>
-        <p>Regionais e cadeias de porte médio em todas as categorias acima. Captura aqui depende de operação centralizada.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section>
-    <h2>Metodologia e ressalvas</h2>
-    <div class="method">
-      <dl>
-        <dt>Função, não título</dt>
-        <dd>Filtro por função de vendas (PDV ou B2B campo), não por palavra "vendedor". CBO 5211-10 agrega vendedor e consultor de vendas no mesmo código.</dd>
-        <dt>Fora do escopo</dt>
-        <dd>Atacarejo (Assaí, Atacadão, Tenda) é self-service sem força de vendedor. Atacado distribuidor (Grupo Martins etc.) entra, tem força externa.</dd>
-        <dt>TAM</dt>
-        <dd>~30% das admissões formais BR concentradas em grandes redes organizadas (faixa 25–40%). Receita = admissões ÷ ratio × R$ 5.000.</dd>
-        <dt>SAM</dt>
-        <dd>Soma bottom-up das categorias, descontando franquia pulverizada (Boticário, planejados, parte de telecom e ótica).</dd>
-        <dt>SOM</dt>
-        <dd>Limitado por capacidade comercial, não por demanda. 15 a 40 redes × 1,5 pacote por ciclo × R$ 60.000 = R$ 2 a 7M/ano.</dd>
-        <dt>Faixa por categoria</dt>
-        <dd>Lojas × vendedores/loja × turnover 30–50%. Estimativa, não dado oficial por empresa. Substituir pelos dados do scraper aumenta precisão.</dd>
-        <dt>Variável crítica</dt>
-        <dd>Contratações por crédito. Case Magalu (3,0x) é n=1. Se o típico for 1,5x, SAM em receita sobe; se for 3,0x, cai pela metade.</dd>
-      </dl>
-    </div>
-  </section>
+  </div><!-- /panel-empresas -->
 
   <footer>
     <span>Estudo de mercado · IAgente</span>
@@ -687,6 +783,13 @@
   input.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') window.checkPwd();
   });
+
+  window.showTab = function(tab, btn) {
+    document.getElementById('panel-mercado').style.display = tab === 'mercado' ? '' : 'none';
+    document.getElementById('panel-empresas').style.display = tab === 'empresas' ? '' : 'none';
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+  };
 })();
 </script>
 
@@ -710,8 +813,7 @@
 
   function update(){
     const r = parseInt(ratio.value, 10) / 10;
-    const rTxt = r.toFixed(1).replace('.', ',') + 'x';
-    ratioOut.textContent = rTxt;
+    ratioOut.textContent = r.toFixed(1).replace('.', ',') + 'x';
     costOut.textContent = 'R$ ' + Math.round(5000/r).toLocaleString('pt-BR');
     const tamM = Math.round((tamAdm / r) * 5000 / 1e6);
     const samM = Math.round((samAdm / r) * 5000 / 1e6);
@@ -732,7 +834,7 @@
   new Chart(document.getElementById('catChart'), {
     type: 'bar',
     data: {
-      labels: labels,
+      labels,
       datasets: [{
         label: 'Admissões/ano (mil)',
         data: ranges,
@@ -755,32 +857,19 @@
           titleFont: { family: 'Inter', size: 12, weight: '500' },
           bodyFont: { family: 'IBM Plex Mono', size: 11 },
           padding: 10,
-          callbacks: {
-            label: (ctx) => `${ctx.raw[0]}k a ${ctx.raw[1]}k admissões/ano`
-          }
+          callbacks: { label: (ctx) => `${ctx.raw[0]}k a ${ctx.raw[1]}k admissões/ano` }
         }
       },
       scales: {
         x: {
           beginAtZero: true,
           grid: { color: '#E6E4DC', drawBorder: false },
-          ticks: {
-            font: { family: 'IBM Plex Mono', size: 10 },
-            color: '#9C9B92'
-          },
-          title: {
-            display: true,
-            text: 'mil admissões / ano',
-            font: { family: 'IBM Plex Mono', size: 10, weight: '500' },
-            color: '#9C9B92'
-          }
+          ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#9C9B92' },
+          title: { display: true, text: 'mil admissões / ano', font: { family: 'IBM Plex Mono', size: 10, weight: '500' }, color: '#9C9B92' }
         },
         y: {
           grid: { display: false, drawBorder: false },
-          ticks: {
-            font: { family: 'Inter', size: 12 },
-            color: '#161614'
-          }
+          ticks: { font: { family: 'Inter', size: 12 }, color: '#161614' }
         }
       }
     }
