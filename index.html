@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TAM SAM SOM — Estudo IAgente · Varejo BR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --surface: #FFFFFF;
+    --ink: #161614;
+    --ink-2: #5C5B55;
+    --ink-3: #9C9B92;
+    --rule: #E6E4DC;
+    --rule-strong: #C8C6BD;
+    --accent: #4D3FA3;
+    --accent-soft: #EFEDFB;
+    --warn: #B8651F;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Password gate */
+  #gate {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  #gate-box {
+    background: var(--surface);
+    border: 1px solid var(--rule-strong);
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  #gate-logo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 24px;
+  }
+  #gate-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  #gate-sub {
+    font-size: 13px;
+    color: var(--ink-2);
+    margin: 0 0 32px;
+  }
+  #gate input[type=password] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--rule-strong);
+    background: var(--bg);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: var(--ink);
+    outline: none;
+    margin-bottom: 12px;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+  #gate input[type=password]:focus {
+    border-color: var(--accent);
+  }
+  #gate button {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  #gate button:hover { opacity: 0.9; }
+  #gate-error {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--warn);
+    margin-top: 12px;
+    min-height: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  .shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 40px 80px;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 16px;
+  }
+  h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0 0 12px;
+  }
+  .deck {
+    font-size: 17px;
+    color: var(--ink-2);
+    max-width: 720px;
+    margin: 0 0 48px;
+    line-height: 1.5;
+  }
+  .meta-row {
+    display: flex;
+    gap: 32px;
+    padding: 16px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 56px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+  }
+  .meta-row span strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  section { margin-bottom: 64px; }
+  h2 {
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-3);
+    margin: 0 0 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* Hero metrics */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--rule-strong);
+    background: var(--surface);
+  }
+  .metric {
+    padding: 32px 32px 28px;
+    border-right: 1px solid var(--rule);
+  }
+  .metric:last-child { border-right: none; }
+  .metric .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 12px;
+  }
+  .metric .value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 38px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 8px;
+    line-height: 1;
+  }
+  .metric .sub {
+    font-size: 13px;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .metric.featured { background: var(--accent-soft); }
+  .metric.featured .label { color: var(--accent); }
+
+  /* Anchor strip */
+  .anchor {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 24px;
+  }
+  .anchor .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 5px 9px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .anchor p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--ink-2);
+  }
+  .anchor strong {
+    color: var(--ink);
+    font-weight: 500;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* Sensitivity panel */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--rule-strong);
+    padding: 32px;
+  }
+  .panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+  .panel-head h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--ink);
+  }
+  .panel-head .note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.05em;
+  }
+  .slider-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 60px;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .slider-row span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+  .slider-row span:last-child { text-align: right; }
+  input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    width: 100%;
+    height: 28px;
+    cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    height: 2px;
+    background: var(--rule-strong);
+  }
+  input[type=range]::-moz-range-track {
+    height: 2px;
+    background: var(--rule-strong);
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    background: var(--accent);
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--accent);
+    border-radius: 50%;
+    margin-top: -8px;
+    cursor: grab;
+  }
+  input[type=range]::-moz-range-thumb {
+    height: 18px;
+    width: 18px;
+    background: var(--accent);
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--accent);
+    border-radius: 50%;
+    cursor: grab;
+  }
+  .readout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+  }
+  .readout .item { padding-right: 24px; }
+  .readout .item + .item { border-left: 1px solid var(--rule); padding-left: 24px; }
+  .readout .k {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-3);
+    margin: 0 0 6px;
+  }
+  .readout .v {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* Chart */
+  .chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 28px 28px 20px;
+  }
+  .chart-canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 440px;
+  }
+
+  /* Categories grid */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule-strong);
+    background: var(--surface);
+  }
+  .cat {
+    padding: 22px 24px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .cat:nth-child(3n) { border-right: none; }
+  .cat-grid > .cat:nth-last-child(-n+3) { border-bottom: none; }
+  .cat-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+    gap: 12px;
+  }
+  .cat-head .name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .cat-head .range {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+  .cat p {
+    font-size: 13px;
+    color: var(--ink-2);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .cat .flag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warn);
+    margin-top: 8px;
+    display: block;
+  }
+  .cat.adjacent { background: #FCFBF6; }
+
+  /* Methodology */
+  .method {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+  }
+  .method dl {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 14px 32px;
+    margin: 0;
+  }
+  .method dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    padding-top: 2px;
+  }
+  .method dd {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 900px) {
+    .shell { padding: 32px 20px 60px; }
+    h1 { font-size: 28px; }
+    .hero, .cat-grid { grid-template-columns: 1fr; }
+    .metric, .cat { border-right: none !important; border-bottom: 1px solid var(--rule); }
+    .readout { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .readout .item + .item { border-left: none; padding-left: 0; }
+    .method dl { grid-template-columns: 1fr; gap: 4px 0; }
+    .method dt { margin-top: 14px; }
+  }
+  @media print {
+    body { background: white; }
+    .shell { max-width: none; padding: 24px; }
+    section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Password gate -->
+<div id="gate">
+  <div id="gate-box">
+    <p id="gate-logo">IAgente · Estudo de Mercado</p>
+    <p id="gate-title">Acesso restrito</p>
+    <p id="gate-sub">Este documento é confidencial.<br>Insira a senha para continuar.</p>
+    <input type="password" id="gate-pwd" placeholder="senha" autocomplete="current-password" />
+    <button onclick="checkPwd()">Entrar</button>
+    <p id="gate-error"></p>
+  </div>
+</div>
+
+<div class="shell">
+
+  <p class="eyebrow">Análise de mercado / IAgente</p>
+  <h1>Vagas de vendas no varejo brasileiro</h1>
+  <p class="deck">Dimensionamento de TAM, SAM e SOM para produto de IA de recrutamento. Crédito por vaga, até 6 finalistas, pacote de 12 créditos a R$ 5.000 cada em ciclos de 6 meses.</p>
+
+  <div class="meta-row">
+    <span>UNIDADE — <strong>admissões formais/ano</strong></span>
+    <span>FONTE ÂNCORA — <strong>CAGED CBO 5211-10</strong></span>
+    <span>PRODUTO — <strong>R$ 5.000 / crédito</strong></span>
+  </div>
+
+  <section>
+    <h2>Dimensionamento</h2>
+    <div class="hero">
+      <div class="metric featured">
+        <p class="label">TAM — Total addressable</p>
+        <p class="value" id="tam-rev">R$ 788M</p>
+        <p class="sub"><span id="tam-vol">315.000</span> admissões/ano · Grandes redes BR</p>
+      </div>
+      <div class="metric">
+        <p class="label">SAM — Serviceable</p>
+        <p class="value" id="sam-rev">R$ 225M</p>
+        <p class="sub"><span id="sam-vol">90.000</span> admissões/ano · Operação centralizada</p>
+      </div>
+      <div class="metric">
+        <p class="label">SOM — Obtenível 24m</p>
+        <p class="value">R$ 2–7M</p>
+        <p class="sub">15 a 40 redes pagantes · ~1,5 pacote/ciclo</p>
+      </div>
+    </div>
+
+    <div class="anchor">
+      <span class="tag">Âncora real</span>
+      <p>Últimos 12 meses: <strong>1.048.539</strong> admissões e <strong>1.038.994</strong> desligamentos formais de vendedor no Brasil (CAGED, CBO 5211-10, que agrega vendedor e consultor).</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sensibilidade — contratações por crédito</h2>
+    <div class="panel">
+      <div class="panel-head">
+        <h3>Variável crítica do modelo</h3>
+        <span class="note">case Magalu = 3,0x · base conservadora = 2,0x</span>
+      </div>
+      <div class="slider-row">
+        <span>1,0x</span>
+        <input type="range" min="10" max="40" value="20" step="1" id="ratio" aria-label="Contratações por crédito" />
+        <span>4,0x</span>
+      </div>
+      <div class="readout">
+        <div class="item">
+          <p class="k">Ratio</p>
+          <p class="v" id="ratio-out">2,0x</p>
+        </div>
+        <div class="item">
+          <p class="k">Custo / contratação</p>
+          <p class="v" id="cost-out">R$ 2.500</p>
+        </div>
+        <div class="item">
+          <p class="k">TAM em receita</p>
+          <p class="v" id="tam-out">R$ 788M</p>
+        </div>
+        <div class="item">
+          <p class="k">SAM em receita</p>
+          <p class="v" id="sam-out">R$ 225M</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Admissões por categoria (estimativa, mil/ano)</h2>
+    <div class="chart-wrap">
+      <div class="chart-canvas-wrap">
+        <canvas id="catChart" role="img" aria-label="Gráfico de barras com faixas de admissões anuais por categoria de varejo"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Empresas por categoria</h2>
+    <div class="cat-grid">
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Moda / departamento</span><span class="range">15–25k/ano</span></div>
+        <p>Renner, Riachuelo, C&amp;A, Marisa, Pernambucanas, Hering, Lojas Avenida, Lojas Torra</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Eletromóveis</span><span class="range">14–22k/ano</span></div>
+        <p>Magazine Luiza, Casas Bahia, Lojas Cem, Novo Mundo, Gazin, Colombo, Eletrozema, Berlanda, Lebes, Becker, Bemol</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Material de construção</span><span class="range">8–14k/ano</span></div>
+        <p>Leroy Merlin, Telhanorte, C&amp;C, Balaroti, Quero-Quero, Cassol, Obramax, Tumelero, Center Castilho</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Veículos</span><span class="range">8–15k/ano</span></div>
+        <p>Saga, Grand Brasil, Itavema, Disbrave, Sinosserra, Localiza Seminovos, Movida Seminovos, Unidas</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Telecom (lojas próprias)</span><span class="range">5–9k/ano</span></div>
+        <p>Vivo, Claro, TIM, Algar</p>
+        <span class="flag">Parte relevante é franquia</span>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Atacado B2B alimentos</span><span class="range">3–6k/ano</span></div>
+        <p>Grupo Martins, Peixoto Comercial, Coremas, Maxxi Atacado, distribuidoras regionais</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Pet</span><span class="range">2,5–5k/ano</span></div>
+        <p>Cobasi, Petz, Petlove</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Cosméticos</span><span class="range">2–4k/ano</span></div>
+        <p>O Boticário (próprias + The Beauty Box + Quem Disse Berenice), Sephora, Época, Água de Cheiro</p>
+        <span class="flag">Boticário majoritariamente franquia</span>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Calçados</span><span class="range">2–4k/ano</span></div>
+        <p>Arezzo&amp;Co, Paquetá, Democrata, Passarela, Lojas Pompéia, Constance</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Esporte</span><span class="range">2–4k/ano</span></div>
+        <p>Centauro (Grupo SBF), Decathlon, Track&amp;Field, Authentic Feet</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Móveis / planejados</span><span class="range">2–4k/ano</span></div>
+        <p>Tok&amp;Stok, Etna, Marabraz, MadeiraMadeira, Bartira. Planejados: Dell Anno, Todeschini, SCA, Italínea, Madesa</p>
+        <span class="flag">Planejados operam em franquia</span>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Joias / acessórios</span><span class="range">1,5–3k/ano</span></div>
+        <p>Vivara, Monte Carlo, Morana, Pandora, H.Stern</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="name">Eletro / info especializado</span><span class="range">1–2k/ano</span></div>
+        <p>Fast Shop, Kalunga</p>
+      </div>
+
+      <div class="cat adjacent">
+        <div class="cat-head"><span class="name">Farmácia (adjacente)</span><span class="range">15–22k/ano</span></div>
+        <p>RD Saúde, Pague Menos/Extrafarma, DPSP, Drogaria Araujo, Panvel, Nissei</p>
+        <span class="flag">Função é balconista. Inclui se incluir.</span>
+      </div>
+
+      <div class="cat adjacent">
+        <div class="cat-head"><span class="name">Cauda longa</span><span class="range">—</span></div>
+        <p>Regionais e cadeias de porte médio em todas as categorias acima. Captura aqui depende de operação centralizada.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Metodologia e ressalvas</h2>
+    <div class="method">
+      <dl>
+        <dt>Função, não título</dt>
+        <dd>Filtro por função de vendas (PDV ou B2B campo), não por palavra "vendedor". CBO 5211-10 agrega vendedor e consultor de vendas no mesmo código.</dd>
+        <dt>Fora do escopo</dt>
+        <dd>Atacarejo (Assaí, Atacadão, Tenda) é self-service sem força de vendedor. Atacado distribuidor (Grupo Martins etc.) entra, tem força externa.</dd>
+        <dt>TAM</dt>
+        <dd>~30% das admissões formais BR concentradas em grandes redes organizadas (faixa 25–40%). Receita = admissões ÷ ratio × R$ 5.000.</dd>
+        <dt>SAM</dt>
+        <dd>Soma bottom-up das categorias, descontando franquia pulverizada (Boticário, planejados, parte de telecom e ótica).</dd>
+        <dt>SOM</dt>
+        <dd>Limitado por capacidade comercial, não por demanda. 15 a 40 redes × 1,5 pacote por ciclo × R$ 60.000 = R$ 2 a 7M/ano.</dd>
+        <dt>Faixa por categoria</dt>
+        <dd>Lojas × vendedores/loja × turnover 30–50%. Estimativa, não dado oficial por empresa. Substituir pelos dados do scraper aumenta precisão.</dd>
+        <dt>Variável crítica</dt>
+        <dd>Contratações por crédito. Case Magalu (3,0x) é n=1. Se o típico for 1,5x, SAM em receita sobe; se for 3,0x, cai pela metade.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <footer>
+    <span>Estudo de mercado · IAgente</span>
+    <span>v1 · construído com Claude</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var PWD = 'intera@iagente2026';
+  var gate = document.getElementById('gate');
+  var input = document.getElementById('gate-pwd');
+  var err = document.getElementById('gate-error');
+
+  if (sessionStorage.getItem('ia_auth') === '1') {
+    gate.style.display = 'none';
+  }
+
+  window.checkPwd = function() {
+    if (input.value === PWD) {
+      sessionStorage.setItem('ia_auth', '1');
+      gate.style.display = 'none';
+    } else {
+      err.textContent = 'Senha incorreta. Tente novamente.';
+      input.value = '';
+      input.focus();
+    }
+  };
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') window.checkPwd();
+  });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(function(){
+  const ratio = document.getElementById('ratio');
+  const ratioOut = document.getElementById('ratio-out');
+  const costOut = document.getElementById('cost-out');
+  const tamRev = document.getElementById('tam-rev');
+  const samRev = document.getElementById('sam-rev');
+  const tamOut = document.getElementById('tam-out');
+  const samOut = document.getElementById('sam-out');
+  const tamAdm = 315000;
+  const samAdm = 90000;
+
+  function fmtBRL(v){
+    if (v >= 1000) return 'R$ ' + (v/1000).toFixed(2).replace('.', ',') + 'bi';
+    return 'R$ ' + Math.round(v) + 'M';
+  }
+
+  function update(){
+    const r = parseInt(ratio.value, 10) / 10;
+    const rTxt = r.toFixed(1).replace('.', ',') + 'x';
+    ratioOut.textContent = rTxt;
+    costOut.textContent = 'R$ ' + Math.round(5000/r).toLocaleString('pt-BR');
+    const tamM = Math.round((tamAdm / r) * 5000 / 1e6);
+    const samM = Math.round((samAdm / r) * 5000 / 1e6);
+    tamRev.textContent = fmtBRL(tamM);
+    samRev.textContent = fmtBRL(samM);
+    tamOut.textContent = fmtBRL(tamM);
+    samOut.textContent = fmtBRL(samM);
+  }
+
+  ratio.addEventListener('input', update);
+  update();
+
+  const labels = ['Moda / departamento','Eletromóveis','Veículos','Material construção','Telecom (próprias)','Atacado B2B alim.','Pet','Cosméticos','Calçados','Esporte','Móveis / planejados','Joias / acessórios','Eletro especializado'];
+  const lows  = [15,14,8,8,5,3,2.5,2,2,2,2,1.5,1];
+  const highs = [25,22,15,14,9,6,5,4,4,4,4,3,2];
+  const ranges = lows.map((l,i)=>[l, highs[i]]);
+
+  new Chart(document.getElementById('catChart'), {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Admissões/ano (mil)',
+        data: ranges,
+        backgroundColor: 'rgba(77, 63, 163, 0.85)',
+        borderColor: '#4D3FA3',
+        borderWidth: 0,
+        borderRadius: 0,
+        borderSkipped: false,
+        barPercentage: 0.7
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#161614',
+          titleFont: { family: 'Inter', size: 12, weight: '500' },
+          bodyFont: { family: 'IBM Plex Mono', size: 11 },
+          padding: 10,
+          callbacks: {
+            label: (ctx) => `${ctx.raw[0]}k a ${ctx.raw[1]}k admissões/ano`
+          }
+        }
+      },
+      scales: {
+        x: {
+          beginAtZero: true,
+          grid: { color: '#E6E4DC', drawBorder: false },
+          ticks: {
+            font: { family: 'IBM Plex Mono', size: 10 },
+            color: '#9C9B92'
+          },
+          title: {
+            display: true,
+            text: 'mil admissões / ano',
+            font: { family: 'IBM Plex Mono', size: 10, weight: '500' },
+            color: '#9C9B92'
+          }
+        },
+        y: {
+          grid: { display: false, drawBorder: false },
+          ticks: {
+            font: { family: 'Inter', size: 12 },
+            color: '#161614'
+          }
+        }
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
