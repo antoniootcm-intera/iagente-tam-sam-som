@@ -374,7 +374,7 @@
 
   /* Chart */
   .chart-wrap { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 28px 28px 20px; }
-  .chart-canvas-wrap { position: relative; width: 100%; height: 460px; }
+  .chart-canvas-wrap { position: relative; width: 100%; height: 720px; }
 
   /* Categories grid */
   .cat-grid {
@@ -694,23 +694,23 @@
       <div class="hero">
         <div class="metric featured">
           <p class="label">TAM — Total addressable</p>
-          <p class="value" id="tam-rev">R$ 788M</p>
-          <p class="sub"><span id="tam-vol">315.000</span> admissões/ano · Grandes redes BR</p>
+          <p class="value" id="tam-rev">R$ 1,00bi</p>
+          <p class="sub"><span id="tam-vol">400.000</span> admissões/ano · Varejo + vendas adjacentes</p>
         </div>
         <div class="metric">
           <p class="label">SAM — Serviceable</p>
-          <p class="value" id="sam-rev">R$ 225M</p>
-          <p class="sub"><span id="sam-vol">90.000</span> admissões/ano · Operação centralizada</p>
+          <p class="value" id="sam-rev">R$ 350M</p>
+          <p class="sub"><span id="sam-vol">140.000</span> admissões/ano · Operação centralizada</p>
         </div>
         <div class="metric">
           <p class="label">SOM — Obtenível 24m</p>
-          <p class="value">R$ 2–7M</p>
-          <p class="sub">15 a 40 redes pagantes · ~1,5 pacote/ciclo</p>
+          <p class="value">R$ 3–9M</p>
+          <p class="sub">20 a 50 redes pagantes · ~1,5 pacote/ciclo</p>
         </div>
       </div>
       <div class="anchor">
         <span class="tag">Âncora real</span>
-        <p>Últimos 12 meses: <strong>1.048.539</strong> admissões e <strong>1.038.994</strong> desligamentos formais de vendedor no Brasil (CAGED, CBO 5211-10, que agrega vendedor e consultor).</p>
+        <p>Base: <strong>1.048.539</strong> admissões/ano de vendedor de varejo (CAGED, CBO 5211-10) + funções de venda adjacentes — crédito consignado, consórcio e adquirência (promotor de vendas CBO 5211-25 e correlatos).</p>
       </div>
     </section>
 
@@ -729,8 +729,8 @@
         <div class="readout">
           <div class="item"><p class="k">Ratio</p><p class="v" id="ratio-out">2,0x</p></div>
           <div class="item"><p class="k">Custo / contratação</p><p class="v" id="cost-out">R$ 2.500</p></div>
-          <div class="item"><p class="k">TAM em receita</p><p class="v" id="tam-out">R$ 788M</p></div>
-          <div class="item"><p class="k">SAM em receita</p><p class="v" id="sam-out">R$ 225M</p></div>
+          <div class="item"><p class="k">TAM em receita</p><p class="v" id="tam-out">R$ 1,00bi</p></div>
+          <div class="item"><p class="k">SAM em receita</p><p class="v" id="sam-out">R$ 350M</p></div>
         </div>
       </div>
     </section>
@@ -746,71 +746,9 @@
 
     <section>
       <h2>Empresas por categoria</h2>
-      <div class="cat-grid">
-        <div class="cat">
-          <div class="cat-head"><span class="name">Moda / departamento</span><span class="range">15–25k/ano</span></div>
-          <p>Renner, Riachuelo, C&amp;A, Marisa, Pernambucanas, Hering, Lojas Avenida, Lojas Torra</p>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Eletromóveis</span><span class="range">14–22k/ano</span></div>
-          <p>Magazine Luiza, Casas Bahia, Lojas Cem, Novo Mundo, Gazin, Colombo, Eletrozema, Berlanda, Lebes, Becker, Bemol</p>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Material de construção</span><span class="range">8–14k/ano</span></div>
-          <p>Leroy Merlin, Telhanorte, C&amp;C, Balaroti, Quero-Quero, Cassol, Obramax, Tumelero, Center Castilho</p>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Veículos</span><span class="range">8–15k/ano</span></div>
-          <p>Saga, Grand Brasil, Itavema, Disbrave, Sinosserra, Localiza Seminovos, Movida Seminovos, Unidas</p>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Telecom (lojas próprias)</span><span class="range">5–9k/ano</span></div>
-          <p>Vivo, Claro, TIM, Algar</p>
-          <span class="flag">Parte relevante é franquia</span>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Atacado B2B alimentos</span><span class="range">3–6k/ano</span></div>
-          <p>Grupo Martins, Peixoto Comercial, Coremas, Maxxi Atacado, distribuidoras regionais</p>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Pet</span><span class="range">2,5–5k/ano</span></div>
-          <p>Cobasi, Petz, Petlove</p>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Cosméticos</span><span class="range">2–4k/ano</span></div>
-          <p>O Boticário (próprias + The Beauty Box + Quem Disse Berenice), Sephora, Época, Água de Cheiro</p>
-          <span class="flag">Boticário majoritariamente franquia</span>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Calçados</span><span class="range">2–4k/ano</span></div>
-          <p>Arezzo&amp;Co, Paquetá, Democrata, Passarela, Lojas Pompéia, Constance</p>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Esporte</span><span class="range">2–4k/ano</span></div>
-          <p>Centauro (Grupo SBF), Decathlon, Track&amp;Field, Authentic Feet</p>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Móveis / planejados</span><span class="range">2–4k/ano</span></div>
-          <p>Tok&amp;Stok, Etna, Marabraz, MadeiraMadeira, Bartira. Planejados: Dell Anno, Todeschini, SCA, Italínea, Madesa</p>
-          <span class="flag">Planejados operam em franquia</span>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Joias / acessórios</span><span class="range">1,5–3k/ano</span></div>
-          <p>Vivara, Monte Carlo, Morana, Pandora, H.Stern</p>
-        </div>
-        <div class="cat">
-          <div class="cat-head"><span class="name">Eletro / info especializado</span><span class="range">1–2k/ano</span></div>
-          <p>Fast Shop, Kalunga</p>
-        </div>
-        <div class="cat adjacent">
-          <div class="cat-head"><span class="name">Farmácia (adjacente)</span><span class="range">15–22k/ano</span></div>
-          <p>RD Saúde, Pague Menos/Extrafarma, DPSP, Drogaria Araujo, Panvel, Nissei</p>
-          <span class="flag">Função é balconista. Inclui se incluir.</span>
-        </div>
-        <div class="cat adjacent">
-          <div class="cat-head"><span class="name">Cauda longa</span><span class="range">—</span></div>
-          <p>Regionais e cadeias de porte médio em todas as categorias acima. Captura aqui depende de operação centralizada.</p>
-        </div>
+      <div class="anchor" style="border-left-color: var(--accent);">
+        <span class="tag" style="color: var(--accent); background: var(--accent-soft);">25 categorias</span>
+        <p>O mapeamento completo — <strong>~255 empresas</strong> em 25 categorias, do varejo de loja às vendas adjacentes de comissão — está na aba <strong>"Empresas ICP"</strong> acima.</p>
       </div>
     </section>
 
@@ -819,19 +757,19 @@
       <div class="method">
         <dl>
           <dt>Função, não título</dt>
-          <dd>Filtro por função de vendas (PDV ou B2B campo), não por palavra "vendedor". CBO 5211-10 agrega vendedor e consultor de vendas no mesmo código.</dd>
+          <dd>Filtro por função de vendas (PDV ou B2B campo), não por palavra "vendedor". CBO 5211-10 agrega vendedor e consultor de varejo; CBO 5211-25 (promotor de vendas) cobre crédito consignado, consórcio e adquirência em campo.</dd>
+          <dt>Escopo ampliado (jun/2026)</dt>
+          <dd>O modelo passou de 14 para 25 categorias — somando vendas adjacentes de comissão (promotoras de crédito, consórcios, adquirência B2B, energia solar) ao varejo de loja. Essas funções não estavam no recorte original do CBO 5211-10.</dd>
           <dt>Fora do escopo</dt>
-          <dd>Atacarejo (Assaí, Atacadão, Tenda) é self-service sem força de vendedor. Atacado distribuidor (Grupo Martins etc.) entra, tem força externa.</dd>
-          <dt>TAM</dt>
-          <dd>~30% das admissões formais BR concentradas em grandes redes organizadas (faixa 25–40%). Receita = admissões ÷ ratio × R$ 5.000.</dd>
-          <dt>SAM</dt>
-          <dd>Soma bottom-up das categorias, descontando franquia pulverizada (Boticário, planejados, parte de telecom e ótica).</dd>
-          <dt>SOM</dt>
-          <dd>Limitado por capacidade comercial, não por demanda. 15 a 40 redes × 1,5 pacote por ciclo × R$ 60.000 = R$ 2 a 7M/ano.</dd>
-          <dt>Faixa por categoria</dt>
-          <dd>Lojas × vendedores/loja × turnover 30–50%. Estimativa, não dado oficial por empresa. Substituir pelos dados do scraper aumenta precisão.</dd>
+          <dd>Atacarejo (Assaí, Atacadão, Tenda) é self-service sem força de vendedor. Montadoras (Stellantis, VW) e bancos-balcão sem PDV de venda também ficam fora.</dd>
+          <dt>TAM — R$ 1,0bi</dt>
+          <dd>315k admissões/ano em varejo organizado (≈30% do CBO 5211-10) + ~85k em funções de venda adjacentes organizadas = 400k. Receita = admissões ÷ ratio × R$ 5.000.</dd>
+          <dt>SAM — R$ 350M</dt>
+          <dd>Soma bottom-up das 25 categorias (~164k brutos), descontando franquia pulverizada e parcelas não-endereçáveis → ~140k admissões serviceable.</dd>
+          <dt>SOM — R$ 3–9M</dt>
+          <dd>Limitado por capacidade comercial, não por demanda. 20 a 50 redes × 1,5 pacote por ciclo × R$ 60.000 = R$ 3 a 9M/ano.</dd>
           <dt>Variável crítica</dt>
-          <dd>Contratações por crédito. Case Magalu (3,0x) é n=1. Se o típico for 1,5x, SAM em receita sobe; se for 3,0x, cai pela metade.</dd>
+          <dd>Contratações por crédito. Case Magalu (3,0x) é n=1. Se o típico for 1,5x, receita sobe; se for 3,0x, cai pela metade. Use o slider acima para sensibilizar.</dd>
         </dl>
       </div>
     </section>
@@ -844,7 +782,7 @@
     <div class="icp-summary">
       <span>ESCOPO — <strong>operação centralizada de RH</strong></span>
       <span>CRITÉRIO — <strong>fora franquias pulverizadas</strong></span>
-      <span>TOTAL — <strong>~220 empresas · 21 categorias</strong></span>
+      <span>TOTAL — <strong>~255 empresas · 25 categorias</strong></span>
     </div>
 
     <div class="icp-grid">
@@ -1231,6 +1169,62 @@
       </div>
 
       <div>
+        <p class="icp-cat-title">Brinquedos / Puericultura <span class="icp-range">2–4k/ano</span></p>
+        <ul class="icp-list">
+          <li>Ri Happy</li>
+          <li>PBKids (Grupo Ri Happy)</li>
+          <li>Ri Happy Baby</li>
+          <li>Bemglô</li>
+          <li>Baby Club</li>
+          <li>Bebê Store</li>
+          <li>Maria Bonita Baby</li>
+          <li>Lojas Pernambucanas (linha bebê)</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Colchões / Cama-Mesa-Banho <span class="icp-range">2–4k/ano</span></p>
+        <ul class="icp-list">
+          <li>Zelo</li>
+          <li>MMartan</li>
+          <li>Trousseau</li>
+          <li>Ortobom (lojas próprias)</li>
+          <li>Sleep House</li>
+          <li>Duoflex / Duomo</li>
+          <li>Persono</li>
+          <li>Casa Moysés</li>
+          <li>Loja Buettner</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Vinhos / Bebidas Premium <span class="icp-range">1–2k/ano</span></p>
+        <ul class="icp-list">
+          <li>Grupo Víssimo (Evino + Grand Cru)</li>
+          <li>World Wine</li>
+          <li>Wine.com.br</li>
+          <li>Mistral</li>
+          <li>Casa Flora / Decanter</li>
+          <li>Divvino</li>
+          <li>Empório Santa Luzia</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="icp-cat-title">Energia solar — varejo / integradores <span class="icp-range">2–4k/ano</span></p>
+        <ul class="icp-list">
+          <li>Aldo Solar</li>
+          <li>Fortlev Solar</li>
+          <li>Solfácil (lojas/parceiros)</li>
+          <li>Edeltec</li>
+          <li>Ecori Energia</li>
+          <li>Helte</li>
+          <li>Portal Solar</li>
+        </ul>
+        <span class="icp-note">Vendedor de sistema fotovoltaico</span>
+      </div>
+
+      <div>
         <p class="icp-cat-title">Farmácia — adjacente <span class="icp-range">18–28k/ano</span></p>
         <ul class="icp-list">
           <li class="adjacent-co">RD Saúde (Drogasil, Droga Raia)</li>
@@ -1415,8 +1409,8 @@
   const samRev = document.getElementById('sam-rev');
   const tamOut = document.getElementById('tam-out');
   const samOut = document.getElementById('sam-out');
-  const tamAdm = 315000;
-  const samAdm = 90000;
+  const tamAdm = 400000;
+  const samAdm = 140000;
 
   function fmtBRL(v){
     if (v >= 1000) return 'R$ ' + (v/1000).toFixed(2).replace('.', ',') + 'bi';
@@ -1438,9 +1432,9 @@
   ratio.addEventListener('input', update);
   update();
 
-  const labels = ['Moda / departamento','Eletromóveis','Veículos','Material construção','Telecom (próprias)','Atacado B2B alim.','Pet','Cosméticos','Calçados','Esporte','Móveis / planejados','Joias / acessórios','Eletro especializado'];
-  const lows  = [15,14,8,8,5,3,2.5,2,2,2,2,1.5,1];
-  const highs = [25,22,15,14,9,6,5,4,4,4,4,3,2];
+  const labels = ['Moda / departamento','Eletromóveis','Veículos','Material construção','Telecom (próprias)','Cosméticos / perfumaria','Óticas','Promotoras de crédito','Esporte','Atacado B2B alim.','Consórcios','Pet','Calçados','Móveis / decoração','Adquirência B2B','Joias / acessórios','Brinquedos / puericultura','Colchões / cama-mesa-banho','Energia solar','Eletro especializado','Suplementos','Livrarias / papelaria','Lingerie','Vinhos / bebidas'];
+  const lows  = [22,18,12,12,5,4,4,4,4,4,3,3,3,3,2,2,2,2,2,2,2,1.5,1.5,1];
+  const highs = [35,28,22,20,9,8,8,8,7,7,6,6,5,5,5,4,4,4,4,3,3,3,2.5,2];
   const ranges = lows.map((l,i)=>[l, highs[i]]);
 
   new Chart(document.getElementById('catChart'), {
