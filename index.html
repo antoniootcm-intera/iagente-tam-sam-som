@@ -758,7 +758,7 @@
     <div class="icp-summary">
       <span>FONTES — <strong>diretório + vagas abertas · jun/2026</strong></span>
       <span>CRITÉRIO — <strong>varejo com força de vendas centralizada</strong></span>
-      <span>MATCHES — <strong>19 empresas</strong></span>
+      <span>MATCHES — <strong>24 empresas</strong></span>
     </div>
 
     <!-- Tabela ordenada por vagas abertas -->
@@ -815,20 +815,25 @@
     if (e.key === 'Enter') window.checkPwd();
   });
 
-  // Inhire ICP table data (sorted by vagas desc)
+  // Inhire ICP table data — cruzamento dos 3 CSVs (sorted by vagas desc)
   var inhireData = [
     {nome:'Grupo Comolatti',segmento:'Veículos (concessionárias)',plano:'Advanced · R$ 4.000/mês',vagas:229,adj:false},
-    {nome:'Essencial Nutrição',segmento:'Nutrição / Retail',plano:'Advanced · R$ 2.500/mês',vagas:177,adj:false},
+    {nome:'Essencial Nutrição',segmento:'Nutrição / Retail',plano:'Advanced · R$ 2.639/mês',vagas:177,adj:false},
+    {nome:'Grupo Lider',segmento:'Varejo (supermercado / eletro · Norte BR)',plano:'Advanced Pro · R$ 5.536/mês',vagas:156,adj:false},
     {nome:'Gocase Brasil',segmento:'Acessórios / Marketplace',plano:'Advanced · R$ 2.500/mês',vagas:61,adj:false},
     {nome:'Westwing',segmento:'Móveis / Home Decor',plano:'Essential · R$ 1.615/mês',vagas:37,adj:false},
-    {nome:'Insider Store',segmento:'Varejo geral',plano:'Advanced · R$ 2.633/mês',vagas:32,adj:false},
+    {nome:'Insider Store',segmento:'Varejo geral',plano:'Advanced · R$ 2.634/mês',vagas:32,adj:false},
     {nome:'Turbi',segmento:'Veículos (assinatura)',plano:'Advanced · R$ 2.800/mês',vagas:29,adj:false},
     {nome:'Caffeine Army',segmento:'Suplementos / Retail',plano:'Essential · R$ 1.200/mês',vagas:18,adj:false},
     {nome:'Autoglass',segmento:'Veículos',plano:'Enterprise · R$ 12.000/mês',vagas:15,adj:false},
-    {nome:'Banco Toyota',segmento:'Veículos (financiamento)',plano:'Advanced · R$ 2.500/mês',vagas:13,adj:false},
-    {nome:'Magazine Luiza',segmento:'Eletromóveis',plano:'Enterprise · R$ 32.500/mês',vagas:11,adj:false},
-    {nome:'Amicci',segmento:'Moda / Activewear',plano:'Advanced · R$ 1.844/mês',vagas:10,adj:false},
+    {nome:'Banco Toyota',segmento:'Veículos (financiamento)',plano:'Advanced · R$ 2.836/mês',vagas:13,adj:false},
+    {nome:'Magazine Luiza',segmento:'Eletromóveis',plano:'Enterprise · R$ 22.500/mês',vagas:11,adj:false},
+    {nome:'Amicci',segmento:'Moda / Activewear',plano:'Advanced · R$ 3.360/mês',vagas:10,adj:false},
     {nome:'Bisutti',segmento:'Moda / Calçados',plano:'Essential · R$ 2.300/mês',vagas:10,adj:false},
+    {nome:'Ancar',segmento:'Shopping Centers',plano:'Enterprise · R$ 12.720/mês',vagas:null,adj:false},
+    {nome:'Puma',segmento:'Esporte / Moda (varejo)',plano:'Essential · R$ 2.700/mês',vagas:null,adj:false},
+    {nome:'Dafiti',segmento:'Moda E-commerce',plano:'Advanced · R$ 2.000/mês',vagas:null,adj:false},
+    {nome:'Grupo Femina',segmento:'Cosméticos',plano:'Advanced · R$ 2.500/mês',vagas:null,adj:false},
     {nome:'Amend Cosméticos',segmento:'Cosméticos',plano:'Advanced · R$ 2.900/mês',vagas:null,adj:false},
     {nome:'Moda Colmeia',segmento:'Moda',plano:'Advanced · R$ 2.400/mês',vagas:null,adj:false},
     {nome:'Grupo CarHouse',segmento:'Veículos',plano:'Advanced · R$ 5.200/mês',vagas:null,adj:false},
