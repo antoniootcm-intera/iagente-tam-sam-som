@@ -756,79 +756,29 @@
   <div id="panel-inhire" style="display:none">
 
     <div class="icp-summary">
-      <span>FONTE — <strong>diretório Inhire · jun/2026</strong></span>
+      <span>FONTES — <strong>diretório + vagas abertas · jun/2026</strong></span>
       <span>CRITÉRIO — <strong>varejo com força de vendas centralizada</strong></span>
-      <span>MATCHES — <strong>17 empresas</strong></span>
+      <span>MATCHES — <strong>19 empresas</strong></span>
     </div>
 
-    <div class="icp-grid">
+    <!-- Tabela ordenada por vagas abertas -->
+    <div style="overflow-x:auto;margin-bottom:48px">
+      <table style="width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--rule-strong)">
+        <thead>
+          <tr style="border-bottom:2px solid var(--rule-strong)">
+            <th style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);font-weight:500;padding:12px 16px;text-align:left">Empresa</th>
+            <th style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);font-weight:500;padding:12px 16px;text-align:left">Segmento</th>
+            <th style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);font-weight:500;padding:12px 16px;text-align:left">Plano Inhire</th>
+            <th style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);font-weight:500;padding:12px 16px;text-align:right">Vagas abertas hoje</th>
+          </tr>
+        </thead>
+        <tbody id="inhire-tbody">
+        </tbody>
+      </table>
+    </div>
 
-      <div>
-        <p class="icp-cat-title">Eletromóveis / Eletro</p>
-        <ul class="icp-list">
-          <li><span style="font-weight:500">Magazine Luiza</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Enterprise · R$ 32.500/mês</span></li>
-          <li><span style="font-weight:500">Grupo Eletrônica Santana</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Essential · R$ 1.220/mês</span></li>
-          <li><span style="font-weight:500">Haier</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Basic · R$ 1.200/mês</span></li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="icp-cat-title">Veículos</p>
-        <ul class="icp-list">
-          <li><span style="font-weight:500">Autoglass</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Enterprise · R$ 12.000/mês</span></li>
-          <li><span style="font-weight:500">Grupo CarHouse</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Advanced · R$ 5.200/mês</span></li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="icp-cat-title">Moda / Calçados</p>
-        <ul class="icp-list">
-          <li><span style="font-weight:500">Moda Colmeia</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Advanced · R$ 2.400/mês</span></li>
-          <li><span style="font-weight:500">Bisutti</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Essential · R$ 2.300/mês</span></li>
-          <li><span style="font-weight:500">Amicci</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Advanced · R$ 1.844/mês</span></li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="icp-cat-title">Cosméticos</p>
-        <ul class="icp-list">
-          <li><span style="font-weight:500">Amend Cosméticos</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Advanced · R$ 2.900/mês</span></li>
-          <li><span style="font-weight:500">Leo Perfumaria</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Basic · R$ 880/mês</span></li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="icp-cat-title">Móveis / Home</p>
-        <ul class="icp-list">
-          <li><span style="font-weight:500">Westwing</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Essential · R$ 1.615/mês</span></li>
-          <li><span style="font-weight:500">Ciello Moveis</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Basic · R$ 690/mês</span></li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="icp-cat-title">Varejo Geral / Marketplace</p>
-        <ul class="icp-list">
-          <li><span style="font-weight:500">Insider Store</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Advanced · R$ 2.633/mês</span></li>
-          <li><span style="font-weight:500">Enjoei</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Advanced · R$ 2.990/mês</span></li>
-          <li><span style="font-weight:500">Gocase Brasil</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Advanced · R$ 2.500/mês</span></li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="icp-cat-title">Nutrição / Suplementos</p>
-        <ul class="icp-list">
-          <li><span style="font-weight:500">Essencial Nutrição</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Advanced · R$ 2.500/mês</span></li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="icp-cat-title">Farmácia — adjacente</p>
-        <ul class="icp-list">
-          <li class="adjacent-co"><span style="font-weight:500">Farmácias Bigfort</span><br><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--ink-3)">Essential · R$ 1.500/mês</span></li>
-        </ul>
-        <span class="icp-note">Incluir se expandir para balconistas</span>
-      </div>
-
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3);letter-spacing:.06em;padding-top:16px;border-top:1px solid var(--rule)">
+      VAGAS ABERTAS — contagem ao vivo no portal inhire.app · jun/2026 &nbsp;·&nbsp; "—" = empresa sem vagas ativas no momento da extração
     </div>
   </div><!-- /panel-inhire -->
 
@@ -864,6 +814,45 @@
   input.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') window.checkPwd();
   });
+
+  // Inhire ICP table data (sorted by vagas desc)
+  var inhireData = [
+    {nome:'Grupo Comolatti',segmento:'Veículos (concessionárias)',plano:'Advanced · R$ 4.000/mês',vagas:229,adj:false},
+    {nome:'Essencial Nutrição',segmento:'Nutrição / Retail',plano:'Advanced · R$ 2.500/mês',vagas:177,adj:false},
+    {nome:'Gocase Brasil',segmento:'Acessórios / Marketplace',plano:'Advanced · R$ 2.500/mês',vagas:61,adj:false},
+    {nome:'Westwing',segmento:'Móveis / Home Decor',plano:'Essential · R$ 1.615/mês',vagas:37,adj:false},
+    {nome:'Insider Store',segmento:'Varejo geral',plano:'Advanced · R$ 2.633/mês',vagas:32,adj:false},
+    {nome:'Turbi',segmento:'Veículos (assinatura)',plano:'Advanced · R$ 2.800/mês',vagas:29,adj:false},
+    {nome:'Caffeine Army',segmento:'Suplementos / Retail',plano:'Essential · R$ 1.200/mês',vagas:18,adj:false},
+    {nome:'Autoglass',segmento:'Veículos',plano:'Enterprise · R$ 12.000/mês',vagas:15,adj:false},
+    {nome:'Banco Toyota',segmento:'Veículos (financiamento)',plano:'Advanced · R$ 2.500/mês',vagas:13,adj:false},
+    {nome:'Magazine Luiza',segmento:'Eletromóveis',plano:'Enterprise · R$ 32.500/mês',vagas:11,adj:false},
+    {nome:'Amicci',segmento:'Moda / Activewear',plano:'Advanced · R$ 1.844/mês',vagas:10,adj:false},
+    {nome:'Bisutti',segmento:'Moda / Calçados',plano:'Essential · R$ 2.300/mês',vagas:10,adj:false},
+    {nome:'Amend Cosméticos',segmento:'Cosméticos',plano:'Advanced · R$ 2.900/mês',vagas:null,adj:false},
+    {nome:'Moda Colmeia',segmento:'Moda',plano:'Advanced · R$ 2.400/mês',vagas:null,adj:false},
+    {nome:'Grupo CarHouse',segmento:'Veículos',plano:'Advanced · R$ 5.200/mês',vagas:null,adj:false},
+    {nome:'Grupo Eletrônica Santana',segmento:'Eletro',plano:'Essential · R$ 1.220/mês',vagas:null,adj:false},
+    {nome:'Haier',segmento:'Eletro',plano:'Basic · R$ 1.200/mês',vagas:null,adj:false},
+    {nome:'Ciello Moveis',segmento:'Móveis',plano:'Basic · R$ 690/mês',vagas:null,adj:false},
+    {nome:'Farmácias Bigfort',segmento:'Farmácia',plano:'Essential · R$ 1.500/mês',vagas:null,adj:true},
+  ];
+
+  var tbody = document.getElementById('inhire-tbody');
+  if (tbody) {
+    inhireData.forEach(function(d, i) {
+      var bg = i % 2 === 0 ? 'var(--bg)' : 'var(--surface)';
+      if (d.adj) bg = '#FCFBF6';
+      var vagasCell = d.vagas ? '<span style="font-weight:500;color:var(--accent)">' + d.vagas + '</span>' : '<span style="color:var(--ink-3)">—</span>';
+      var adjTag = d.adj ? ' <span style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--warn);background:#FFF8F0;padding:2px 6px">adj.</span>' : '';
+      tbody.innerHTML += '<tr style="background:' + bg + ';border-bottom:1px solid var(--rule)">' +
+        '<td style="padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink)">' + d.nome + adjTag + '</td>' +
+        '<td style="padding:12px 16px;font-size:13px;color:var(--ink-2)">' + d.segmento + '</td>' +
+        '<td style="padding:12px 16px;font-family:\'IBM Plex Mono\',monospace;font-size:11px;color:var(--ink-3)">' + d.plano + '</td>' +
+        '<td style="padding:12px 16px;font-family:\'IBM Plex Mono\',monospace;font-size:14px;text-align:right">' + vagasCell + '</td>' +
+      '</tr>';
+    });
+  }
 
   window.showTab = function(tab, btn) {
     document.getElementById('panel-mercado').style.display = tab === 'mercado' ? '' : 'none';
