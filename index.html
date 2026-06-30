@@ -649,6 +649,116 @@
     .shell { max-width: none; padding: 24px; }
     section { page-break-inside: avoid; }
   }
+
+  /* ===== CRM Kanban ===== */
+  .crm-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; flex-wrap: wrap; gap: 16px; }
+  .crm-subtitle { font-size: 15px; color: var(--ink-2); margin: 6px 0 0; line-height: 1.4; }
+  .crm-add-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    border: none; border-radius: 10px;
+    padding: 12px 20px; font-family: 'Geist', sans-serif;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    transition: background .15s, transform .1s; white-space: nowrap; flex-shrink: 0;
+  }
+  .crm-add-btn:hover { background: #4A38E0; }
+  .crm-add-btn:active { transform: scale(0.98); }
+  .crm-stats { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .crm-stats > span {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 10px; padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .crm-stats strong { color: var(--ink); font-size: 15px; font-family: 'Geist', sans-serif; letter-spacing: -0.01em; font-weight: 700; }
+  .kanban-board { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 24px; align-items: flex-start; }
+  .kanban-board::-webkit-scrollbar { height: 6px; }
+  .kanban-board::-webkit-scrollbar-track { background: transparent; }
+  .kanban-board::-webkit-scrollbar-thumb { background: var(--rule-strong); border-radius: 3px; }
+  .kanban-col {
+    min-width: 250px; flex-shrink: 0;
+    background: var(--bg); border: 1px solid var(--rule);
+    border-radius: 14px; padding: 14px; display: flex; flex-direction: column;
+  }
+  .kanban-col-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .kanban-col-label { font-size: 13.5px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; display: flex; align-items: center; gap: 7px; }
+  .kanban-col-count {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+    background: var(--surface); border: 1px solid var(--rule);
+    color: var(--ink-3); padding: 2px 8px; border-radius: 99px;
+  }
+  .kanban-cards { display: flex; flex-direction: column; gap: 8px; min-height: 72px; border-radius: 10px; padding: 2px; transition: background .15s; }
+  .kanban-cards.drag-over { background: var(--accent-glow); outline: 2px dashed var(--accent); outline-offset: 2px; }
+  .kanban-card {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 14px; cursor: grab;
+    transition: transform .15s, box-shadow .15s; position: relative; user-select: none;
+  }
+  .kanban-card:hover { transform: translateY(-1px); box-shadow: 0 6px 20px -8px rgba(15,15,30,0.14); }
+  .kanban-card.dragging { opacity: 0.45; cursor: grabbing; }
+  .kanban-card-empresa { font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 3px; }
+  .kanban-card-seg { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-3); margin-bottom: 9px; }
+  .kanban-card-meta { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+  .kanban-card-row { font-size: 12.5px; color: var(--ink-2); line-height: 1.4; }
+  .kanban-card-nota { font-size: 12px; color: var(--ink-3); font-style: italic; margin-top: 4px; line-height: 1.5; }
+  .kanban-card-actions { display: flex; gap: 6px; padding-top: 10px; border-top: 1px solid var(--rule); }
+  .kanban-card-btn {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    background: var(--bg); border: 1px solid var(--rule);
+    border-radius: 6px; padding: 4px 10px; cursor: pointer; color: var(--ink-2); transition: all .12s;
+  }
+  .kanban-card-btn:hover { background: var(--rule); color: var(--ink); }
+  .kanban-card-btn.del { color: var(--rose); }
+  .kanban-card-btn.del:hover { background: var(--rose-soft); border-color: var(--rose); }
+  .kanban-empty { text-align: center; padding: 20px 8px; font-size: 12px; color: var(--ink-3); font-style: italic; }
+  .stage-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+  .crm-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(10, 10, 15, 0.5); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9000; padding: 20px;
+  }
+  .crm-modal {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 20px; padding: 32px 36px;
+    width: 100%; max-width: 540px;
+    box-shadow: 0 20px 60px -20px rgba(10,10,15,0.28);
+    max-height: 90vh; overflow-y: auto;
+  }
+  .crm-modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+  .crm-modal-head h3 { font-size: 18px; font-weight: 600; color: var(--ink); margin: 0; letter-spacing: -0.01em; }
+  .crm-modal-close {
+    width: 32px; height: 32px; background: var(--bg); border: 1px solid var(--rule);
+    border-radius: 8px; cursor: pointer; font-size: 20px; color: var(--ink-2);
+    display: flex; align-items: center; justify-content: center; transition: all .12s; line-height: 1;
+  }
+  .crm-modal-close:hover { background: var(--rule); color: var(--ink); }
+  .crm-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .crm-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .crm-field label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); font-weight: 500; }
+  .crm-field input, .crm-field select, .crm-field textarea {
+    background: var(--bg); border: 1.5px solid var(--rule-strong);
+    border-radius: 10px; padding: 11px 14px;
+    font-family: 'Geist', sans-serif; font-size: 14px; color: var(--ink);
+    outline: none; transition: border-color .15s, box-shadow .15s; width: 100%; resize: vertical;
+  }
+  .crm-field input:focus, .crm-field select:focus, .crm-field textarea:focus {
+    border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-glow);
+  }
+  .crm-modal-footer { display: flex; justify-content: flex-end; gap: 10px; padding-top: 16px; border-top: 1px solid var(--rule); margin-top: 8px; }
+  .crm-btn-secondary {
+    background: var(--bg); border: 1.5px solid var(--rule-strong); border-radius: 10px; padding: 11px 20px;
+    font-family: 'Geist', sans-serif; font-size: 14px; font-weight: 500; color: var(--ink-2); cursor: pointer; transition: all .12s;
+  }
+  .crm-btn-secondary:hover { background: var(--rule); color: var(--ink); }
+  .crm-btn-primary {
+    background: var(--accent); border: none; border-radius: 10px; padding: 11px 24px;
+    font-family: 'Geist', sans-serif; font-size: 14px; font-weight: 600; color: #fff; cursor: pointer; transition: background .15s;
+  }
+  .crm-btn-primary:hover { background: #4A38E0; }
+  @media (max-width: 560px) { .crm-field-row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -684,6 +794,7 @@
     <button class="tab-btn" onclick="showTab('empresas', this)">Empresas ICP</button>
     <button class="tab-btn" onclick="showTab('inhire', this)">Clientes Inhire no ICP</button>
     <button class="tab-btn" onclick="showTab('intera', this)">Clientes Intera no ICP</button>
+    <button class="tab-btn" onclick="showTab('crm', this)">Pipeline CRM</button>
   </nav>
 
   <!-- TAB: Mercado -->
@@ -1295,6 +1406,113 @@
     <p class="table-note"><strong style="color:var(--ink-2);font-weight:600">Demais clientes ativos (fora do ICP varejo):</strong> AB-Inbev, CSU, Deloitte, dLocal, Doctoralia, Ebanx, Facta Tech, Global, Jeitto, RNP, Stefanini, Stellantis, Venturus</p>
   </div><!-- /panel-intera -->
 
+  <!-- TAB: Pipeline CRM -->
+  <div id="panel-crm" style="display:none">
+
+    <div class="crm-top">
+      <div>
+        <h2 style="margin-bottom:6px;">Pipeline Comercial</h2>
+        <p class="crm-subtitle">Acompanhe as empresas que você abordou e os agendamentos de Discovery</p>
+      </div>
+      <button class="crm-add-btn" onclick="openCrmModal()">+ Adicionar empresa</button>
+    </div>
+
+    <div class="crm-stats">
+      <span>Total abordadas <strong id="crm-total">0</strong></span>
+      <span>Agendamentos Discovery <strong id="crm-agendados">0</strong></span>
+      <span>Propostas enviadas <strong id="crm-propostas">0</strong></span>
+      <span>Sem retorno <strong id="crm-semretorno">0</strong></span>
+    </div>
+
+    <div class="kanban-board" id="kanban-board"></div>
+
+    <div id="crm-modal" class="crm-modal-overlay" style="display:none" onclick="crmModalOverlayClick(event)">
+      <div class="crm-modal">
+        <div class="crm-modal-head">
+          <h3 id="crm-modal-title">Nova empresa</h3>
+          <button class="crm-modal-close" onclick="closeCrmModal()">×</button>
+        </div>
+        <form id="crm-form" onsubmit="saveCrmCard(event)">
+          <div class="crm-field">
+            <label>Empresa *</label>
+            <input type="text" id="crm-empresa" required placeholder="Ex: Magazine Luiza, Renner...">
+          </div>
+          <div class="crm-field">
+            <label>Segmento ICP</label>
+            <select id="crm-segmento">
+              <option value="">Selecione...</option>
+              <option>Moda / Departamento</option>
+              <option>Eletromóveis</option>
+              <option>Veículos</option>
+              <option>Material de Construção</option>
+              <option>Cosméticos / Perfumaria</option>
+              <option>Esporte</option>
+              <option>Calçados</option>
+              <option>Móveis / Decoração</option>
+              <option>Pet</option>
+              <option>Joias / Acessórios</option>
+              <option>Brinquedos / Puericultura</option>
+              <option>Colchões / Cama-Mesa-Banho</option>
+              <option>Suplementos</option>
+              <option>Livrarias / Papelaria</option>
+              <option>Lingerie</option>
+              <option>Vinhos / Bebidas</option>
+              <option>Óticas</option>
+              <option>Telecom (próprias)</option>
+              <option>Promotoras de crédito</option>
+              <option>Consórcios</option>
+              <option>Adquirência B2B</option>
+              <option>Energia Solar</option>
+              <option>Eletro especializado</option>
+              <option>Atacado B2B</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="crm-field-row">
+            <div class="crm-field">
+              <label>Contato</label>
+              <input type="text" id="crm-contato" placeholder="Nome do contato">
+            </div>
+            <div class="crm-field">
+              <label>Cargo</label>
+              <input type="text" id="crm-cargo" placeholder="Ex: CHRO, Gerente RH">
+            </div>
+          </div>
+          <div class="crm-field-row">
+            <div class="crm-field">
+              <label>Data da abordagem</label>
+              <input type="date" id="crm-data-abordagem">
+            </div>
+            <div class="crm-field">
+              <label>Data do agendamento</label>
+              <input type="date" id="crm-data-agenda">
+            </div>
+          </div>
+          <div class="crm-field">
+            <label>Etapa no pipeline</label>
+            <select id="crm-etapa">
+              <option value="identificado">Identificado</option>
+              <option value="abordado">Abordado</option>
+              <option value="agendado">Agendado · Discovery</option>
+              <option value="discovery">Em Discovery</option>
+              <option value="proposta">Proposta enviada</option>
+              <option value="semretorno">Sem retorno</option>
+            </select>
+          </div>
+          <div class="crm-field">
+            <label>Notas</label>
+            <textarea id="crm-notas" rows="3" placeholder="Contexto, próximos passos, nome do decisor..."></textarea>
+          </div>
+          <div class="crm-modal-footer">
+            <button type="button" class="crm-btn-secondary" onclick="closeCrmModal()">Cancelar</button>
+            <button type="submit" class="crm-btn-primary">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div><!-- /panel-crm -->
+
   <footer>
     <span>Estudo de mercado · IAgente</span>
     <span>v1 · construído com Claude</span>
@@ -1390,11 +1608,12 @@
   }
 
   window.showTab = function(tab, btn) {
-    ['mercado','empresas','inhire','intera'].forEach(function(p) {
+    ['mercado','empresas','inhire','intera','crm'].forEach(function(p) {
       document.getElementById('panel-' + p).style.display = tab === p ? '' : 'none';
     });
     document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
+    if (tab === 'crm' && window.renderCrmBoard) window.renderCrmBoard();
   };
 })();
 </script>
@@ -1481,6 +1700,162 @@
       }
     }
   });
+})();
+</script>
+<script>
+(function(){
+  var STAGES = [
+    {id:'identificado', label:'Identificado', color:'#8A8A95'},
+    {id:'abordado',     label:'Abordado',     color:'#D97706'},
+    {id:'agendado',     label:'Agendado · Discovery', color:'#0EA5A4'},
+    {id:'discovery',    label:'Em Discovery', color:'#5B47F5'},
+    {id:'proposta',     label:'Proposta enviada', color:'#16A34A'},
+    {id:'semretorno',   label:'Sem retorno',  color:'#E11D48'},
+  ];
+  var KEY = 'iagente_crm_v1';
+  var _cards = [];
+  var _editId = null;
+  var _dragId = null;
+
+  function load() { try { _cards = JSON.parse(localStorage.getItem(KEY)||'[]'); } catch(e) { _cards=[]; } }
+  function save() { localStorage.setItem(KEY, JSON.stringify(_cards)); }
+  function uid()  { return 'c'+Math.random().toString(36).slice(2)+Date.now().toString(36); }
+  function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function fmtD(d) { if(!d) return ''; var p=d.split('-'); return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:d; }
+
+  function setEl(id,v){ var el=document.getElementById(id); if(el) el.textContent=v; }
+
+  function renderBoard() {
+    load();
+    var board = document.getElementById('kanban-board');
+    if (!board) return;
+
+    setEl('crm-total',    _cards.length);
+    setEl('crm-agendados', _cards.filter(function(c){ return c.etapa==='agendado'||c.etapa==='discovery'; }).length);
+    setEl('crm-propostas', _cards.filter(function(c){ return c.etapa==='proposta'; }).length);
+    setEl('crm-semretorno',_cards.filter(function(c){ return c.etapa==='semretorno'; }).length);
+
+    board.innerHTML = '';
+
+    STAGES.forEach(function(stage) {
+      var sc = _cards.filter(function(c){ return c.etapa===stage.id; });
+
+      var col = document.createElement('div');
+      col.className = 'kanban-col';
+      col.innerHTML =
+        '<div class="kanban-col-head">'+
+          '<span class="kanban-col-label"><span class="stage-dot" style="background:'+stage.color+'"></span>'+esc(stage.label)+'</span>'+
+          '<span class="kanban-col-count">'+sc.length+'</span>'+
+        '</div>'+
+        '<div class="kanban-cards" id="kcards-'+stage.id+'">'+
+          (sc.length===0 ? '<p class="kanban-empty">Arraste cards aqui</p>' : '')+
+        '</div>';
+      board.appendChild(col);
+
+      var zone = col.querySelector('.kanban-cards');
+      zone.addEventListener('dragover',  function(e){ e.preventDefault(); zone.classList.add('drag-over'); });
+      zone.addEventListener('dragleave', function()  { zone.classList.remove('drag-over'); });
+      zone.addEventListener('drop', function(e){
+        e.preventDefault(); zone.classList.remove('drag-over');
+        if (!_dragId) return;
+        var card = _cards.find(function(c){ return c.id===_dragId; });
+        if (card){ card.etapa=stage.id; save(); renderBoard(); }
+        _dragId = null;
+      });
+
+      sc.forEach(function(card){
+        var el = document.createElement('div');
+        el.className = 'kanban-card';
+        el.draggable = true;
+        el.addEventListener('dragstart', function(){ _dragId=card.id; el.classList.add('dragging'); });
+        el.addEventListener('dragend',   function(){ el.classList.remove('dragging'); _dragId=null; });
+
+        var meta = '';
+        if (card.contato)        meta += '<div class="kanban-card-row">👤 '+esc(card.contato)+(card.cargo?' · '+esc(card.cargo):'')+'</div>';
+        if (card.dataAbordagem)  meta += '<div class="kanban-card-row">📅 Abordado '+fmtD(card.dataAbordagem)+'</div>';
+        if (card.dataAgenda)     meta += '<div class="kanban-card-row">🗓️ Discovery '+fmtD(card.dataAgenda)+'</div>';
+
+        el.innerHTML =
+          '<div class="kanban-card-empresa">'+esc(card.empresa)+'</div>'+
+          (card.segmento ? '<div class="kanban-card-seg">'+esc(card.segmento)+'</div>' : '')+
+          (meta ? '<div class="kanban-card-meta">'+meta+'</div>' : '')+
+          (card.notas ? '<div class="kanban-card-nota">'+esc(card.notas.substring(0,90))+(card.notas.length>90?'…':'')+'</div>' : '')+
+          '<div class="kanban-card-actions">'+
+            '<button class="kanban-card-btn" data-edit="'+card.id+'">Editar</button>'+
+            '<button class="kanban-card-btn del" data-del="'+card.id+'">Excluir</button>'+
+          '</div>';
+
+        el.querySelector('[data-edit]').addEventListener('click', function(e){ e.stopPropagation(); openCrmModal(card.id); });
+        el.querySelector('[data-del]').addEventListener('click',  function(e){ e.stopPropagation(); crmDelete(card.id); });
+        zone.appendChild(el);
+      });
+    });
+  }
+
+  window.renderCrmBoard = renderBoard;
+
+  window.openCrmModal = function(id) {
+    _editId = id || null;
+    var modal = document.getElementById('crm-modal');
+    if (!modal) return;
+    document.getElementById('crm-modal-title').textContent = _editId ? 'Editar empresa' : 'Nova empresa';
+    if (_editId) {
+      var c = _cards.find(function(x){ return x.id===_editId; });
+      if (!c) return;
+      document.getElementById('crm-empresa').value        = c.empresa||'';
+      document.getElementById('crm-segmento').value       = c.segmento||'';
+      document.getElementById('crm-contato').value        = c.contato||'';
+      document.getElementById('crm-cargo').value          = c.cargo||'';
+      document.getElementById('crm-data-abordagem').value = c.dataAbordagem||'';
+      document.getElementById('crm-data-agenda').value    = c.dataAgenda||'';
+      document.getElementById('crm-etapa').value          = c.etapa||'identificado';
+      document.getElementById('crm-notas').value          = c.notas||'';
+    } else {
+      document.getElementById('crm-form').reset();
+    }
+    modal.style.display = 'flex';
+    setTimeout(function(){ document.getElementById('crm-empresa').focus(); }, 60);
+  };
+
+  window.closeCrmModal = function() {
+    var m = document.getElementById('crm-modal');
+    if (m) m.style.display = 'none';
+    _editId = null;
+  };
+
+  window.crmModalOverlayClick = function(e) {
+    if (e.target === document.getElementById('crm-modal')) closeCrmModal();
+  };
+
+  window.saveCrmCard = function(e) {
+    e.preventDefault();
+    var card = {
+      id:            _editId || uid(),
+      empresa:       document.getElementById('crm-empresa').value.trim(),
+      segmento:      document.getElementById('crm-segmento').value,
+      contato:       document.getElementById('crm-contato').value.trim(),
+      cargo:         document.getElementById('crm-cargo').value.trim(),
+      dataAbordagem: document.getElementById('crm-data-abordagem').value,
+      dataAgenda:    document.getElementById('crm-data-agenda').value,
+      etapa:         document.getElementById('crm-etapa').value || 'identificado',
+      notas:         document.getElementById('crm-notas').value.trim(),
+    };
+    if (_editId) {
+      var idx = _cards.findIndex(function(c){ return c.id===_editId; });
+      if (idx>=0) _cards[idx]=card; else _cards.push(card);
+    } else {
+      _cards.push(card);
+    }
+    save(); closeCrmModal(); renderBoard();
+  };
+
+  window.crmDelete = function(id) {
+    if (!confirm('Excluir este card?')) return;
+    _cards = _cards.filter(function(c){ return c.id!==id; });
+    save(); renderBoard();
+  };
+
+  load();
 })();
 </script>
 </body>
